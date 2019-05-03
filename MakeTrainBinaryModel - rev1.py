@@ -3,7 +3,9 @@ import random
 
 
 def funSimpleTriangleCreate():
-    coordinates = (34, 375, 250, 0, 467, 375)
+    coordinates = (34, 375,
+                   250, 0,
+                   467, 375)
     varTriangle = Image.new('L', (500, 500), (0))
     drw = ImageDraw.Draw(varTriangle)
     drw.polygon(coordinates, outline=(255), fill=(255))
@@ -11,11 +13,50 @@ def funSimpleTriangleCreate():
 
 
 def funSimpleSquareCreate():
-    coordinates = (250, 0, 500, 250, 250, 500, 0, 250)
+    coordinates = (250, 0,
+                   500, 250,
+                   250, 500,
+                   0, 250)
     varSquare = Image.new('L', (500, 500), (0))
     drw = ImageDraw.Draw(varSquare)
     drw.polygon(coordinates, outline=(255), fill=(255))
     return varSquare
+
+
+def funSimpleCircleCreate():
+    coordinates = (0, 0,
+                   500, 500)
+    varCircle = Image.new('L', (500, 500), (0))
+    drw = ImageDraw.Draw(varCircle)
+    drw.ellipse(coordinates, outline=(255), fill=(255))
+    return varCircle
+
+
+def funSimpleCrossCreate():
+    coordinates = (50, 200,
+                   200, 200,
+                   200, 50,
+                   300, 50,
+                   300, 200,
+                   450, 200,
+                   450, 300,
+                   300, 300,
+                   300, 450,
+                   200, 450,
+                   200, 300,
+                   50, 300)
+    varCross = Image.new('L', (500, 500), (0))
+    drw = ImageDraw.Draw(varCross)
+    drw.polygon(coordinates, outline=(255), fill=(255))
+    return varCross
+
+
+def funSimpleChordCreate():
+    coordinates1 = (50, 50, 450, 450)
+    varChord = Image.new('L', (500, 500), (0))
+    drw = ImageDraw.Draw(varChord)
+    drw.chord(coordinates1, 210, 0, fill=(255))
+    return varChord
 
 
 def funResizeImg(img):
