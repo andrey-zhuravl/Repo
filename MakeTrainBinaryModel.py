@@ -120,8 +120,7 @@ def funCreationFullModel(trainImgArray, trainLabelArray):
     varPasteImgToBackgroundF = funPasteImgToBackground(varImgRotateF, varImgResizeF[1])
     varImgToByteF = funToByte(varPasteImgToBackgroundF)
     trainImgArray = trainImgArray + varImgToByteF
-    trainLabelArray = trainLabelArray + bytearray([55])
-
+ 
     funSaveBinFileModel(trainImgArray)
     funSaveBinFileLabel(trainLabelArray)
 
