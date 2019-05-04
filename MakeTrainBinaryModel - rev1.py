@@ -97,6 +97,9 @@ def funSaveBinFileLabel(varToByte):
 def funCreationFullModel(trainImgArray, trainLabelArray):
     varSimpleTriangleF = funSimpleTriangleCreate()
     varSimpleSquareF = funSimpleSquareCreate()
+    varSimpleCircleF = funSimpleCircleCreate()
+    varSimpleCrossF = funSimpleCrossCreate()
+    varSimpleChordF = funSimpleChordCreate()
 
     varTriangleResizeF = funResizeImg(varSimpleTriangleF)
     varTriangleRotateF = funRotateImg(varTriangleResizeF[0])
@@ -106,13 +109,43 @@ def funCreationFullModel(trainImgArray, trainLabelArray):
     varSquareRotateF = funRotateImg(varSquareResizeF[0])
     varPasteSquareToBackgroundF = funPasteImgToBackground(varSquareRotateF, varSquareResizeF[1])
 
+    varCircleResizeF = funResizeImg(varSimpleCircleF)
+    varCircleRotateF = funRotateImg(varCircleResizeF[0])
+    varPasteCircleToBackgroundF = funPasteImgToBackground(varCircleRotateF, varCircleResizeF[1])
+
+    varCrossResizeF = funResizeImg(varSimpleCrossF)
+    varCrossRotateF = funRotateImg(varCrossResizeF[0])
+    varPasteCrossToBackgroundF = funPasteImgToBackground(varCrossRotateF, varCrossResizeF[1])
+
+    varChordResizeF = funResizeImg(varSimpleChordF)
+    varChordRotateF = funRotateImg(varChordResizeF[0])
+    varPasteChordToBackgroundF = funPasteImgToBackground(varChordRotateF, varChordResizeF[1])
+
+    #     111 - Triangle
+    #     222 - Cquare
+    #     333 - Circle
+    #     444 - Cross
+    #     555 - Chord
+
     varTriangleToByteF = funToByte(varPasteTriangleToBackgroundF)
     trainImgArray = trainImgArray + varTriangleToByteF
-    trainLabelArray = trainLabelArray + bytearray([111])
+    trainLabelArray = trainLabelArray + bytearray([11])
 
     varSquareToByteF = funToByte(varPasteSquareToBackgroundF)
     trainImgArray = trainImgArray + varSquareToByteF
-    trainLabelArray = trainLabelArray + bytearray([222])
+    trainLabelArray = trainLabelArray + bytearray([22])
+
+    varCircleToByteF = funToByte(varPasteCircleToBackgroundF)
+    trainImgArray = trainImgArray + varCircleToByteF
+    trainLabelArray = trainLabelArray + bytearray([33])
+
+    varCrossToByteF = funToByte(varPasteCrossToBackgroundF)
+    trainImgArray = trainImgArray + varCrossToByteF
+    trainLabelArray = trainLabelArray + bytearray([44])
+
+    varChordToByteF = funToByte(varPasteChordToBackgroundF)
+    trainImgArray = trainImgArray + varChordToByteF
+    trainLabelArray = trainLabelArray + bytearray([55])
 
     funSaveBinFileModel(trainImgArray)
     funSaveBinFileLabel(trainLabelArray)
