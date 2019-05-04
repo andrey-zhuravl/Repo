@@ -121,12 +121,6 @@ def funCreationFullModel(trainImgArray, trainLabelArray):
     varChordRotateF = funRotateImg(varChordResizeF[0])
     varPasteChordToBackgroundF = funPasteImgToBackground(varChordRotateF, varChordResizeF[1])
 
-    #     111 - Triangle
-    #     222 - Cquare
-    #     333 - Circle
-    #     444 - Cross
-    #     555 - Chord
-
     varTriangleToByteF = funToByte(varPasteTriangleToBackgroundF)
     trainImgArray = trainImgArray + varTriangleToByteF
     trainLabelArray = trainLabelArray + bytearray([11])
@@ -149,7 +143,6 @@ def funCreationFullModel(trainImgArray, trainLabelArray):
 
     funSaveBinFileModel(trainImgArray)
     funSaveBinFileLabel(trainLabelArray)
-
 
 ###############################################################################################
 
