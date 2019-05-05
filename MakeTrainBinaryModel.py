@@ -95,7 +95,7 @@ def funSaveBinFileLabel(varToByte):
         fileModelOut.write(varToByte)
 
 
-def funCreationFullModel(trainImgArray, trainLabelArray):
+def funFigure(trainLabelArray):
     arrayFigure = [0, 1, 2, 3, 4]
     varFigureNumber = np.random.choice(arrayFigure, p=[0.05, 0.45, 0.20, 0.20, 0.10])
 
@@ -115,19 +115,25 @@ def funCreationFullModel(trainImgArray, trainLabelArray):
         varImg = funSimpleChordCreate()
         trainLabelArray = trainLabelArray + bytearray([55])
 
-    varImgResizeF = funResizeImg(varImg)
+    return (varImg, trainLabelArray)
+
+
+def funCreationFullModel(trainImgArray, trainLabelArray):
+    varFunFigure = funFigure(trainLabelArray)
+
+    varImgResizeF = funResizeImg(varFunFigure[0])
     varImgRotateF = funRotateImg(varImgResizeF[0])
     varPasteImgToBackgroundF = funPasteImgToBackground(varImgRotateF, varImgResizeF[1])
     varImgToByteF = funToByte(varPasteImgToBackgroundF)
     trainImgArray = trainImgArray + varImgToByteF
- 
+
     funSaveBinFileModel(trainImgArray)
-    funSaveBinFileLabel(trainLabelArray)
+    funSaveBinFileLabel(varFunFigure[1])
 
 ###############################################################################################
 
-trainLabelF = bytearray()
 trainImgF = bytearray()
+trainLabelF = bytearray()
 
 open('FileTrainBinaryModel', "w").close()
 open('FileTrainBinaryLabel', "w").close()
